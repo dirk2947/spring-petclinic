@@ -18,14 +18,7 @@ package org.springframework.samples.petclinic.owner;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 
@@ -44,6 +37,7 @@ import org.springframework.util.Assert;
  */
 @Entity
 @Table(name = "owners")
+@NamedQueries({ @NamedQuery(name = "Owner.findAll", query = "select o from Owner o") })
 public class Owner extends Person {
 
 	@Column(name = "address")
@@ -53,6 +47,11 @@ public class Owner extends Person {
 	@Column(name = "city")
 	@NotEmpty
 	private String city;
+
+	@Column(name = "zip")
+	@NotEmpty
+	@Digits(fraction = 0, integer = 5)
+	private String zip;
 
 	@Column(name = "telephone")
 	@NotEmpty
@@ -78,6 +77,14 @@ public class Owner extends Person {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public String getZip() {
+		return this.zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 
 	public String getTelephone() {
@@ -107,9 +114,11 @@ public class Owner extends Person {
 		return getPet(name, false);
 	}
 
-	/**
+	/*
 	 * Return the Pet with the given id, or null if none found for this Owner.
+	 *
 	 * @param name to test
+	 *
 	 * @return a pet if pet id is already in use
 	 */
 	public Pet getPet(Integer id) {
@@ -147,8 +156,8 @@ public class Owner extends Person {
 	public String toString() {
 		return new ToStringCreator(this).append("id", this.getId()).append("new", this.isNew())
 				.append("lastName", this.getLastName()).append("firstName", this.getFirstName())
-				.append("address", this.address).append("city", this.city).append("telephone", this.telephone)
-				.toString();
+				.append("address", this.address).append("city", this.city).append("zip", this.zip)
+				.append("telephone", this.telephone).toString();
 	}
 
 	/**

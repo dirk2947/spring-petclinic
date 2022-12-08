@@ -21,6 +21,8 @@ INSERT INTO types (name) SELECT 'lizard' WHERE NOT EXISTS (SELECT * FROM special
 INSERT INTO types (name) SELECT 'snake' WHERE NOT EXISTS (SELECT * FROM specialties WHERE name='snake');
 INSERT INTO types (name) SELECT 'bird' WHERE NOT EXISTS (SELECT * FROM specialties WHERE name='bird');
 INSERT INTO types (name) SELECT 'hamster' WHERE NOT EXISTS (SELECT * FROM specialties WHERE name='cat');
+INSERT INTO types (name) SELECT 'turtle' WHERE NOT EXISTS (SELECT * FROM specialties WHERE name='turtle');
+INSERT INTO types (name) SELECT 'fish' WHERE NOT EXISTS (SELECT * FROM specialties WHERE name='fish');
 
 INSERT INTO owners (first_name, last_name, address, city, telephone) SELECT 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023' WHERE NOT EXISTS (SELECT * FROM owners WHERE id=1);
 INSERT INTO owners (first_name, last_name, address, city, telephone) SELECT 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749' WHERE NOT EXISTS (SELECT * FROM owners WHERE id=2);

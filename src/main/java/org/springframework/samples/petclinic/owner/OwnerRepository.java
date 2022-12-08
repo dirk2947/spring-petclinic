@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
@@ -71,6 +72,8 @@ public interface OwnerRepository extends Repository<Owner, Integer> {
 	 * @param owner the {@link Owner} to save
 	 */
 	void save(Owner owner);
+
+	void delete(Owner owner);
 
 	/**
 	 * Returnes all the owners from data store
