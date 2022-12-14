@@ -139,15 +139,15 @@ class OwnerController {
 		return "redirect:/owners/{ownerId}";
 	}
 
-	// @DeleteMapping("/owners/{ownerId}")
+	// @DeleteMapping("/owners/{ownerId}/delete")
 	// public String processDeleteById(@PathVariable("ownerId") int ownerId) {
 	// Owner owner = this.owners.findById(ownerId);
 	// this.owners.delete(owner);
 	// return "redirect:/owners";
 	// }
 
-	@GetMapping("/owners/{ownerId}/delete")
-	public String processDeleteById(@PathVariable("ownerId") int ownerId) {
+	@DeleteMapping("/owners/{ownerId}/delete")
+	public String processDeleteById(@PathVariable int ownerId) {
 		Owner owner = this.owners.findById(ownerId);
 		this.owners.delete(owner);
 		return "redirect:/owners";

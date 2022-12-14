@@ -38,8 +38,11 @@
       New Pet</a>
 <!--    <a th:href="@{__${owner.id}__/delete}" th:method="DELETE" class="btn btn-primary">Delete-->
 <!--      Owner</a>-->
-    <a th:href="@{__${owner.id}__/delete}" class="btn btn-primary">Delete
-      Owner</a>
+<!--    <a th:action="@{__${owner.id}__/delete}" th:method="delete" value="delete" class="btn btn-primary">Delete Owner</a>-->
+
+    <form th:action="@{__${owner.id}__/delete}" th:method="delete">
+      <input class="btn btn-primary" type="submit" value="delete" />
+    </form>
   
     <br />
     <br />
